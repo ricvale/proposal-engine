@@ -14,7 +14,7 @@ A local-first SaaS tool that turns a client brief into a complete, editable prop
 - **DB:** SQLite to start (one file, zero setup). Swap to MySQL later via env if needed.
 - **Local env:** Laravel Herd (free; bundles PHP, nginx, `.test` domains)
 - **LLM abstraction:** Laravel 13 **AI SDK** (first-party, provider-agnostic, stable). Handles retries, error normalization, queue integration. Native providers include Anthropic, OpenAI, **and Ollama** — so both the dev and prod paths go through the SDK.
-- **LLM (dev):** Ollama running locally — free, offline (`llama3.1:8b` or `qwen2.5:7b`), via the SDK's Ollama provider
+- **LLM (dev):** Ollama running locally — free, offline (`granite4.1:3b`; fits in 16GB RAM and handles schema-constrained JSON — larger models either don't fit or grind under Ollama's format constraint), via the SDK's Ollama provider
 - **LLM (prod-quality):** Anthropic via the AI SDK — env swap, same code path
 - **PDF export:** `barryvdh/laravel-dompdf` (pure PHP, runs anywhere)
 - **Quality tools:** Pint (style), Larastan (static analysis), Pest (tests)
