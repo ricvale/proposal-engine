@@ -17,13 +17,26 @@ Turn a rough client brief into a polished, structured project proposal — gener
 - barryvdh/laravel-dompdf for PDF export
 - Pest, Larastan (PHPStan), Pint
 
-## Setup
+## Installation
+
+Requirements: PHP 8.3+, [Composer](https://getcomposer.org), Node.js 20+, and (for local AI) [Ollama](https://ollama.com). SQLite is used out of the box — no database server needed.
 
 ```bash
+git clone https://github.com/ricvale/proposal-engine.git
+cd proposal-engine
 composer setup
 ```
 
-This installs dependencies, creates `.env`, generates the app key, runs migrations, and builds frontend assets.
+`composer setup` does everything in one go: installs PHP and npm dependencies, creates `.env`, generates the app key, runs migrations, and builds frontend assets. Prefer manual steps? They are:
+
+```bash
+composer install
+cp .env.example .env
+php artisan key:generate
+php artisan migrate
+npm install
+npm run build
+```
 
 ### AI provider
 
@@ -43,7 +56,7 @@ AI_MODEL="granite4.1:3b"
 composer dev
 ```
 
-This runs the HTTP server, queue worker, and Vite together. Generation itself runs synchronously in the request (expect a wait of a minute or two with local models), so the queue worker isn't strictly required.
+Then open http://localhost:8000. This single command runs the HTTP server, queue worker, and Vite together. Generation itself runs synchronously in the request (expect a wait of a minute or two with local models), so the queue worker isn't strictly required.
 
 Using [Laravel Herd](https://herd.laravel.com), the app is served at `http://proposalengine.test`; run `npm run dev` alongside it for assets (or use the built assets from `npm run build`).
 
