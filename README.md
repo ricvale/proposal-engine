@@ -56,7 +56,7 @@ AI_MODEL="granite4.1:3b"
 composer dev
 ```
 
-Then open http://localhost:8000. This single command runs the HTTP server, queue worker, and Vite together. Generation itself runs synchronously in the request (expect a wait of a minute or two with local models), so the queue worker isn't strictly required.
+Then open [http://localhost:8000](http://localhost:8000). This single command runs the HTTP server, queue worker, and Vite together. Generation itself runs synchronously in the request (expect a wait of a minute or two with local models), so the queue worker isn't strictly required.
 
 Using [Laravel Herd](https://herd.laravel.com), the app is served at `http://proposalengine.test`; run `npm run dev` alongside it for assets (or use the built assets from `npm run build`).
 
